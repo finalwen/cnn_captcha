@@ -56,7 +56,7 @@ class TrainModel(CNN):
             raise TrainError("图片转换为矩阵时出错，请检查图片格式")
 
         # 初始化变量
-        super(TrainModel, self).__init__(image_height, image_width, len(label), char_set, model_save_dir)
+        super(TrainModel, self).__init__(image_height, image_width, 6, char_set, model_save_dir)
 
         # 相关信息打印
         print("-->图片尺寸: {} X {}".format(image_height, image_width))
@@ -255,7 +255,7 @@ def main():
 
     if use_labels_json_file:
         with open("tools/labels.json", "r") as f:
-            char_set = f.read().strip()
+            char_set = f.read().strip('"')
     else:
         char_set = sample_conf["char_set"]
 
